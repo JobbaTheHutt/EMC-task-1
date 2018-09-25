@@ -29,6 +29,12 @@ Ues = Udc*S*sqrt(log(100e3/10));
 Ur1 = sqrt(Uth1^2+Ues^2);
 Ur2 = sqrt(Uth2^2+Ues^2);
 
+%% Noises without generator
+% R1
+V1_oG = Ur1*R2/(R2+R1);    % Voltage divider to get the voltage over Rp(Amplifier +)
+% R2
+V2_oG = Ur2*R1/(R1+R2);    % Voltage divider to get the voltage over Rp(Amplifier +)
+
 %% Noice for every resistor without the other
 % Rg
 Rp = R1*R2/(R1+R2);     % paralell resistor of R1 and R2
@@ -58,6 +64,8 @@ Vout_g = (R4+R3)/(R4)*Vg;    % Outputvoltage of the Amplifier with respect to Rg
 Vout_1 = (R4+R3)/(R4)*V1;    % Outputvoltage of the Amplifier with respect to R1
 Vout_2 = (R4+R3)/(R4)*V2;    % Outputvoltage of the Amplifier with respect to R2
 
+Vout_1_oG = (R4+R3)/(R4)*V1_oG; % Outputvoltage of the Amplifier with respect to R1 and wıthout generator
+Vout_2_oG = (R4+R3)/(R4)*V2_oG; % Outputvoltage of the Amplifier with respect to R2 and wıthout generator
 %% Combining the noises
 V_noise = sqrt(Vout_g^2+Vout_1^2+Vout_2^2+Vout_3^2+Vout_4^2+Vout_5^2);
 disp(['The total RMS noise voltage is ' ,num2str(V_noise*10^6),'µV.']);
