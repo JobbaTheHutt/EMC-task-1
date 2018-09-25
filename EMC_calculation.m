@@ -48,16 +48,13 @@ Rp = Rg*R1/(Rg+R1);     % paralell resistor of R1 and Rg
 V2 = Ur2*Rp/(Rp+R2);    % Voltage divider to get the voltage over Rp(Amplifier +)
 % R3 
 % Outputterminal = output of the amplifier?
-R34 = R3 + R4;          % seriell Resistors
-Vout_3 = Uth3*R5/(R34+R5);
+Vout_3 = Uth3*R4/R3;
 % R4 
 % Outputterminal = output of the amplifier?
-R34 = R3 + R4;          % seriell Resistors
-Vout_4 = Uth4*R5/(R34+R5);
+Vout_4 = Uth4*R3/R4;
 % R5
 % Outputterminal = output of the amplifier?
-R34 = R3 + R4;          % seriell Resistors
-Vout_5 = -Uth5*R34/(R34+R5);
+Vout_5 = -Uth5; % dırectly affects the output
 
 %% Noice after the Amplifier
 Vout_g = (R4+R3)/(R4)*Vg;    % Outputvoltage of the Amplifier with respect to Rg
